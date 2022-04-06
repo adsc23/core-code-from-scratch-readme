@@ -6,3 +6,18 @@
 
 # *Is Java compiled or interpreted, or both?* 
 ## Is a hybrid programming language
+
+
+# *Pseudocode currency converter*
+# You have been selected to develop the algorithm that will be used to convert dollars (USD) to bitcoin (BTC), for this the first thing you must do is deliver a pseudocode with the algorithm to be developed, in this way you can explain in a better way to the team what will be the required operation. The main idea is to have a website where the user will be asked to enter the amount to convert.
+
+1. START
+2. BTC <-- 0.000022
+3. USD <-- 0.00
+4. CONVER <-- 0.00
+5. PRINT "Ingrese la cantidad de dolares que quiere convertir a Bitcoins" 
+6. USD <-- GET
+7. CONVER <-- USD * BTC
+8. PRINT "La conversion es: " 
+9. PRINT CONVER
+10. END

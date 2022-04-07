@@ -1,3 +1,4 @@
+ Tuesday 5th, April
 # *Interpreted Language*
 ## Runs the a program line by line and execute each command, this programming language is cross-platform which makes it faster or easier to test and debug, the source code is public because you need to send to everyone that wants to run the program.
 
@@ -21,3 +22,11 @@
 8. PRINT "La conversion es: " 
 9. PRINT CONVER
 10. END
+
+------------------------------------------------------------------------------------------------------------------
+Wednesday 6th, April
+# *Your date of birth in the matrix?*
+## Your team has just seen the movie "Matrix" and you have been asked, how the number of your year of birth would be written in binary. You must learn how to translate your date of birth into binary and show your team. (Do not use a webpage or a tool to convert your date of birth) 
+
+11111001001 = 1993 my birthday year
+

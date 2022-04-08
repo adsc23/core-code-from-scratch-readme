@@ -30,3 +30,29 @@ Wednesday 6th, April
 
 11111001001 = 1993 my birthday year
 
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------
+Thrusday 7th, April
+
+# *Print special numbers*
+## In this exercise you must use an iterative flow control to be able to print all the even numbers in the range of numbers from 0 to 100. Remember that you should not print each number, you should use a flow control structure to perform the exercise
+
+console.log('Numbers from 0 to 100 using FOR loop');
+
+var num = 0;
+
+for (var i = 0; i <= 100; i += 2) {
+  num = num + i;
+  
+  console.log(num);
+  num = 0;
+}

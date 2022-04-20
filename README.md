@@ -46,6 +46,7 @@ Thrusday 7th, April
 # *Print special numbers*
 ## In this exercise you must use an iterative flow control to be able to print all the even numbers in the range of numbers from 0 to 100. Remember that you should not print each number, you should use a flow control structure to perform the exercise
 
+```
 console.log('Numbers from 0 to 100 using FOR loop');
 
 var num = 0;
@@ -56,3 +57,111 @@ for (var i = 0; i <= 100; i += 2) {
   console.log(num);
   num = 0;
 }
+```
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+Tuesday 19th, April
+
+# *Kata Exercise #1*
+## This code does not execute properly. Try to figure out why.
+
+```
+// SOLUTION
+function multiply(a, b){
+  return a * b
+}
+```
+
+# *Kata Exercise #2*
+## You'll be given a string, and have to return the sum of all characters as an int. The function should be able to handle all ASCII characters.
+
+examples:
+
+uniTotal("a") == 97 uniTotal("aaa") == 291
+
+```
+// SOLUTION
+function uniTotal (myString) {
+// total up dem unicodes!
+  let total = 0;
+  let nLetters = myString.length;
+  for (let i = 0; i < nLetters; i++){
+    total = total + myString[i].charCodeAt();
+  }
+  return total;
+}
+```
+# *Kata Exercise #3*
+## Write a function get_char() / getChar() which takes a number and returns the corresponding ASCII char for that value.
+
+Example:
+
+get_char(65)
+
+should return:
+
+'A'
+
+```
+// SOLUTION
+function getChar(aNumber){
+  let vASCII = String.fromCharCode(aNumber);
+  return vASCII;
+}
+```
+
+# *Kata Exercise #4*
+## Implement a function that adds two numbers together and returns their sum in binary. The conversion can be done before, or after the addition.
+
+The binary number returned should be a string.
+
+Example:(Input1, Input2 --> Output (explanation)))
+
+1, 1 --> "10" (1 + 1 = 2 in decimal or 10 in binary)
+
+```
+// SOLUTION
+function addBinary(a,b) {
+  let sum = a + b;
+  let bNumber = new String(sum);
+  
+  return parseInt(bNumber).toString(2);
+}
+```
+
+# *Kata Exercise #5*
+## Create a function finalGrade, which calculates the final grade of a student depending on two parameters: a grade for the exam and a number of completed projects.
+
+This function should take two arguments: exam - grade for exam (from 0 to 100); projects - number of completed projects (from 0 and above);
+
+This function should return a number (final grade). There are four types of final grades:
+
+- 100, if a grade for the exam is more than 90 or if a number of completed projects more than 10.
+- 90, if a grade for the exam is more than 75 and if a number of completed projects is minimum 5.
+- 75, if a grade for the exam is more than 50 and if a number of completed projects is minimum 2.
+- 0, in other cases
+
+```
+// SOLUTION
+function finalGrade (exam, projects) {
+ if(exam > 90 || projects > 10){
+   return 100
+ }
+   else if (exam > 75 && projects >= 5){
+     return 90
+  }
+  else if (exam > 50 && projects >= 2){
+    return 75
+  }
+   return 0
+}
+```
+---------------------------------------------------------------------------------------------------------------------------

@@ -43,10 +43,11 @@ Wednesday 6th, April
 ---------------------------------------------------------------------------------------------------------------------
 Thrusday 7th, April
 
-# *Print special numbers*
+# *Exercise 1 / Print special numbers *
 ## In this exercise you must use an iterative flow control to be able to print all the even numbers in the range of numbers from 0 to 100. Remember that you should not print each number, you should use a flow control structure to perform the exercise
 
 ```
+//SOLUTION
 console.log('Numbers from 0 to 100 using FOR loop');
 
 var num = 0;
@@ -58,15 +59,37 @@ for (var i = 0; i <= 100; i += 2) {
   num = 0;
 }
 ```
+# *Exercise 2 / Bad code I *
+## The code shown below is not working in the right way, as a task you must find the error made by the developer who programmed this code and correct it, for this exercise you must explain what the error is and place the correct code
 
+```
+//SOLUTION
+var cond = true;
 
+if ((cond == true)) {
+  console.log('The cond variable is true');
+} else {
+  console.log('The cond variable is false');
+}
+```
 
+# *Exercise 3 / Bad code II *
+## You must create the code that follows the following logic, if the given number is 100, take this number as special and show the following message: "This is a special number!", but if the number is less than 1000, multiple of 10 and different from 100, you must show the following message: "This number is almost special". if none of the given conditions are met show the following message: "Just a regular number". Another developer was trying to program the logic, but apparently couldn't, you need to fix the code to work properly
 
+```
+//SOLUTION
+var n = 85;
 
-
-
-
-
+if (n === 100) {
+  console.log('This is a special number!');
+}
+else if (n < 1000 && n % 10 === 0) {
+  console.log('This number is almost special');
+  console.log('This number is multiple of 10');
+} else {
+  console.log('Just a regular number');
+}
+```
 -------------------------------------------------------------------------------------------------------------------
 Tuesday 19th, April
 
@@ -165,7 +188,7 @@ function finalGrade (exam, projects) {
 }
 ```
 ---------------------------------------------------------------------------------------------------------------------------
-Tuesday 20th, April
+Wednesday 20th, April
 
 # *Kata Exercise #1*
 ## The purpose of this kata is to work out just how many bottles of duty free whiskey you would have to buy such that the saving over the normal high street price would effectively cover the cost of your holiday.
@@ -256,6 +279,7 @@ function validSpacing(string2A) {
 Note: input will never be an empty string
 
 ```
+//SOLUTION
 function fakeBin(stringN){
   if (stringN === ''){
   return false;
@@ -275,4 +299,125 @@ function fakeBin(stringN){
 }
 ```
 --------------------------------------------------------------------------------------------------------
-Wednesday 21st, April
+Thursday 21st, April
+
+# *Kata Exercise #1*
+## Remove all exclamation marks from the end of sentence.
+
+
+Examples \n
+1. remove("Hi!") === "Hi" 
+2. remove("Hi!!!") === "Hi" 
+3. remove("!Hi") === "!Hi" 
+4. remove("!Hi!") === "!Hi" 
+5. remove("Hi! Hi!") === "Hi! Hi" 
+6. remove("Hi") === "Hi" 
+
+```
+//SOLUTION
+function remove(string) {  
+let newString = '';
+let final = string.length -1;
+  
+  for (let i = final; i > 0; i--) {
+    if (string[i] !== '!'){ 
+      newString = string.substring(0, final + 1);
+      break;
+    }
+    else {
+      final = final - 1;
+      newString = string.substring(0, final + 1);
+    }
+    
+  }
+  return newString;
+}
+```
+
+# *Kata Exercise #2*
+## Create a function called shortcut to remove the lowercase vowels (a, e, i, o, u ) in a given string.
+
+Examples
+- "hello"     -->  "hll"
+- "codewars"  -->  "cdwrs"
+- "goodbye"   -->  "gdby"
+- "HELLO"     -->  "HELLO"
+
+```
+//SOLUTION
+function shortcut (string) {
+  let vowels = ['a','e','i','o','u'];
+  let newString = '';
+  Loop1:
+  for (let i = 0; i < string.length; i++) {
+    Loop2:
+    for (let j = 0; j < vowels.length; j++){
+      if (string.charAt(i) === vowels[j]) {
+        //continue Loop2;
+        continue Loop1;
+      }
+    }
+    newString = newString + string[i];
+  }
+  return newString;
+}
+```
+
+# *Kata Exercise #3*
+## Rock Paper Scissors
+Let's play! You have to return which player won! In case of a draw return Draw!.
+
+Examples:
+
+- rps('scissors','paper') // Player 1 won!
+- rps('scissors','rock') // Player 2 won!
+- rps('paper','paper') // Draw!
+
+```
+//SOLUTION
+const rps = (p1, p2) => {
+  if (p1 === p2) { 
+    return 'Draw!';
+  }
+  if (p1 === 'rock' && p2 === 'scissors'){
+    return 'Player 1 won!';   
+    }
+  if (p1 === 'scissors' && p2 === 'paper'){
+    return 'Player 1 won!';
+  }
+  if (p1 === 'paper' && p2 === 'rock'){
+    return 'Player 1 won!';
+  }
+  else
+    {
+      return 'Player 2 won!';
+    }
+};
+```
+
+# *Kata Exercise #4*
+## Persistent Burger
+Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
+
+For example (Input --> Output):
+
+- 39 --> 3 (because 3*9 = 27, 2*7 = 14, 1*4 = 4 and 4 has only one digit)
+- 999 --> 4 (because 9*9*9 = 729, 7*2*9 = 126, 1*2*6 = 12, and finally 1*2 = 2)
+- 4 --> 0 (because 4 is already a one-digit number)
+
+```
+function multiply(times, values) {
+  //Callback funtion con paramentros times y values adquiriendo su valores por medio de la funcion persistence
+  if(values.length > 1) {
+    let newValues = values.reduce((total, n) => total * parseInt(n),1) // aqui creo un nuevo array newValues
+      .toString() //Aqui convierto el array newValues a un string
+      .split('') //Aqui separo el array por numeros 
+    return multiply(times + 1, newValues); //Retorno mi callback funtion si no tengo un numero con mas de un numero
+  }
+  return times;
+}
+
+function persistence(n) {
+  return multiply(0, n.toString().split(''));
+}
+```

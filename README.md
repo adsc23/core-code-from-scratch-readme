@@ -421,3 +421,67 @@ function persistence(n) {
   return multiply(0, n.toString().split(''));
 }
 ```
+----------------------------------------------------------------------------------------------------------
+Thursday 25th, April
+
+# *Kata Exercise #1*
+## Who likes it?
+You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
+
+Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:
+
+- []                                -->  "no one likes this"
+- ["Peter"]                         -->  "Peter likes this"
+- ["Jacob", "Alex"]                 -->  "Jacob and Alex like this"
+- ["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
+- ["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
+Note: For 4 or more names, the number in "and 2 others" simply increases.
+
+```
+//SOLUTION
+function likes(names) {
+  // recibir los nombres, contar los nombres
+  // asignar que mensaje mostrar upon the amount of names
+  if(names.length === 0) {
+    return `no one likes this`;
+  } 
+  if(names.length === 1) {
+    return `${names[0]} likes this`;
+  }
+  if(names.length === 2){
+    return `${names[0]} and ${names[1]} like this`;
+  }
+  if(names.length === 3){
+    return `${names[0]}, ${names[1]} and ${names[2]} like this`;
+  }
+  return `${names[0]}, ${names[1]} and ${names.length-2} others like this`;
+}
+```
+
+# *Kata Exercise #2*
+## Bit Counting
+Write a function that takes an integer as input, and returns the number of bits that are equal to one in the binary representation of that number. You can guarantee that input is non-negative.
+
+Example: The binary representation of 1234 is 10011010010, so the function should return 5 in this case
+
+```
+//SOLUTION
+function countBits(n) {
+  // 1. Convertir a binario el numero que recibimos
+  // 2. Contar los 1 dentro del arreglo con los numeros binarios
+  let nBinary = n.toString(2).split('');
+  //console.log('Aqui esta convertido a numero binario ->' + nBinary);
+  
+  let bitsCount = nBinary.reduce((a,b) => a + parseInt(b), 0);
+  // Aqui tomo el arreglo con los numeros binarios y le aplico el metodo reduce para que sume entre si los numeros
+  
+  return bitsCount;
+}
+```
+# *Kata Exercise #3*
+## Your order, please
+Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
+
+Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
+
+If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.

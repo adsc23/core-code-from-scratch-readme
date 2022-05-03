@@ -611,3 +611,29 @@ function pigIt(str){
       return finalString;
 }
 ```
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------
+Thursday 28th, April
+
+# *Core Challenge - Mission Statement *
+## Let’s write our Mission Statement! In one paragraph, please answer to the next 5 questions:
+
+1. Who are you?
+2. What background do you have?
+3. Who do you want to be?
+4. What do you want to do?
+5. What are the core values and principles that govern your character and contributions?
+
+```
+My name is Angello, I'm a Customer Success Representative with 7+ years of experience,
+I'm currently looking to make a change in my career, I'm currently studying programming 
+in Javascript, so I can start programming websites so I can have the opportunity to work 
+as a Front-end developer or Back-end Developer. I'm always looking to improve in life, 
+I have taught myself to be persistent and do the best I can so I can resolve any issues
+I face in life. My main goal in life is to become a better version of myself.
+```

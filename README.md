@@ -28,17 +28,76 @@ Wednesday 6th, April
 # *Your date of birth in the matrix?*
 ## Your team has just seen the movie "Matrix" and you have been asked, how the number of your year of birth would be written in binary. You must learn how to translate your date of birth into binary and show your team. (Do not use a webpage or a tool to convert your date of birth) 
 
+`
 11111001001 = 1993 my birthday year
+`
 
+# *MIPS*
+## Based on the guide and the examples of the low-level language, create the following
+- Create a program that adds any two given numbers provided by the user
+- Create a program that displays your name 
 
+```
+//SOLUTION TO -> Create a program that adds any two given numbers provided by the user
+.data
+        welcome: .asciiz "\n================= Welcome =================\n"
+        result: .asciiz "\nThe result is: "
+        number_one_msg: .asciiz "\nEnter the first number: "
+        number_two_msg: .asciiz "\nEnter the second number: "
+  .text
+        main:
+              # welcome message
+              li $v0, 4
+              la $a0, welcome
+              syscall
 
+              # user input
+              li $v0, 4
+              la $a0, number_one_msg
+              syscall
 
+              li $v0, 5
+              syscall
 
+              # saving user input
+              move $t0, $v0
 
+              # user input
+              li $v0, 4
+              la $a0, number_two_msg
+              syscall
 
+              li $v0, 5
+              syscall
 
+              # saving user input
+              move $t1, $v0
 
+              # adding the user numbers
+              add $t2, $t0, $t1
 
+              # showing result number
+              li $v0, 4
+              la $a0, result
+              syscall
+
+              # printing number
+              li $v0, 1
+              move $a0, $t2
+              syscall
+```
+
+```
+//SOLUTION TO -> Create a program that displays your name 
+ .data
+	      my_name: .asciiz "\nAngello\n"
+  .text
+	      main:
+              li $v0, 4
+              la $a0, my_name
+              syscall
+
+```
 
 ---------------------------------------------------------------------------------------------------------------------
 Thrusday 7th, April
@@ -406,6 +465,7 @@ For example (Input --> Output):
 - 4 --> 0 (because 4 is already a one-digit number)
 
 ```
+//SOLUTION
 function multiply(times, values) {
   //Callback funtion con paramentros times y values adquiriendo su valores por medio de la funcion persistence
   if(values.length > 1) {
@@ -422,7 +482,7 @@ function persistence(n) {
 }
 ```
 ----------------------------------------------------------------------------------------------------------
-Thursday 25th, April
+Monday 25th, April
 
 # *Kata Exercise #1*
 ## Who likes it?
@@ -485,3 +545,69 @@ Your task is to sort a given string. Each word in the string will contain a sing
 Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
 
 If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.
+
+```
+//SOLUTION
+// 1. Convertir el string a un arreglo
+// 2. leer cada una de las palabras y encontrar el numero asignado a cada palabra para reordenar el arreglo
+// 3. Basado en el numero de las palabras crear un nuevo string con el orden correcto
+  
+
+function getWordIndex(word){
+  //Aqui creo un High order function para leer cada palabra y reemplazar todos los caracteres que no son
+  //numeros con nada ('') para que me devuelva solo el numero que la palabra tiene
+  for (let i = 0; i < word.length; i++){
+    if (Number(word[i].replace(/\D/g, ''))) return word[i];
+  }
+}
+
+function order(words){
+  // Aqui convierto el string a un arreglo, despues creo un nuevo array que me devolvera el orden correcto
+  // Orden de las palabras con el metodo sort y la funcion que cree anteriormente, finalmente convierto el array a un string con join
+  let array = words.split(' ');
+
+  let arraySorted = array.sort((firstWord,secondWord) => 
+  getWordIndex(firstWord) - getWordIndex(secondWord)); 
+
+  return arraySorted.join(' ');
+}
+```
+----------------------------------------------------------------------------------------------------------
+Tuesday 26th, April
+
+# *Kata Exercise #1*
+## Simple Pig Latin
+Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched.
+
+Examples
+- pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
+- pigIt('Hello world !');     // elloHay orldway !
+
+Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
+
+```
+//SOLUTION
+// 1. Leer cada una de las palabras, mover cada la primera letra de cada palabra al final de la misma
+// 2. Agregar 'ay' al final de cada palabra sin eliminar cualquier signo de puntuacion
+
+function word(str) {
+  // En esta funcion reviso cada palabra
+    let firstLetter = str.match(/^\w/); // Leo la primera letra y la guardo en firstLetter
+    let replacing = str.replace(/^\w/, ''); //Reemplazo la primera letra con nada ('') 
+    replacing = replacing.replace(/$/, firstLetter + 'ay'); // agrego la ultima letra al final de la palabra con 'ay'
+    return replacing;
+}
+
+function pigIt(str){
+  let array = str.split(' ');
+  let pMarks = ['!', '¡', '?', '¿', '.', ',', ':', ';'];
+  let finalString = '';
+
+  for (let i = 0; i < array.length; i++){
+      if (pMarks.indexOf(array[i]) >= 0) continue; //Valido que no tengo ningun punctuation mark si lo tengo me lo salto
+      array[i] = word(array[i]);  // hago un nuevo arreglo reemplazando las palabras con las que me genera mi funcion word
+  }
+      finalString = array.join(' ');
+      return finalString;
+}
+```

@@ -105,7 +105,7 @@ Thrusday 7th, April
 # *Exercise 1 / Print special numbers *
 ## In this exercise you must use an iterative flow control to be able to print all the even numbers in the range of numbers from 0 to 100. Remember that you should not print each number, you should use a flow control structure to perform the exercise
 
-```
+```js
 //SOLUTION
 console.log('Numbers from 0 to 100 using FOR loop');
 
@@ -118,10 +118,11 @@ for (var i = 0; i <= 100; i += 2) {
   num = 0;
 }
 ```
+
 # *Exercise 2 / Bad code I *
 ## The code shown below is not working in the right way, as a task you must find the error made by the developer who programmed this code and correct it, for this exercise you must explain what the error is and place the correct code
 
-```
+```js
 //SOLUTION
 var cond = true;
 
@@ -135,7 +136,7 @@ if ((cond == true)) {
 # *Exercise 3 / Bad code II *
 ## You must create the code that follows the following logic, if the given number is 100, take this number as special and show the following message: "This is a special number!", but if the number is less than 1000, multiple of 10 and different from 100, you must show the following message: "This number is almost special". if none of the given conditions are met show the following message: "Just a regular number". Another developer was trying to program the logic, but apparently couldn't, you need to fix the code to work properly
 
-```
+```js
 //SOLUTION
 var n = 85;
 
@@ -155,7 +156,7 @@ Tuesday 19th, April
 # *Kata Exercise #1*
 ## This code does not execute properly. Try to figure out why.
 
-```
+```js
 // SOLUTION
 function multiply(a, b){
   return a * b
@@ -169,7 +170,7 @@ examples:
 
 uniTotal("a") == 97 uniTotal("aaa") == 291
 
-```
+```js
 // SOLUTION
 function uniTotal (myString) {
 // total up dem unicodes!
@@ -192,7 +193,7 @@ should return:
 
 'A'
 
-```
+```js
 // SOLUTION
 function getChar(aNumber){
   let vASCII = String.fromCharCode(aNumber);
@@ -209,7 +210,7 @@ Example:(Input1, Input2 --> Output (explanation)))
 
 1, 1 --> "10" (1 + 1 = 2 in decimal or 10 in binary)
 
-```
+```js
 // SOLUTION
 function addBinary(a,b) {
   let sum = a + b;
@@ -231,7 +232,7 @@ This function should return a number (final grade). There are four types of fina
 - 75, if a grade for the exam is more than 50 and if a number of completed projects is minimum 2.
 - 0, in other cases
 
-```
+```js
 // SOLUTION
 function finalGrade (exam, projects) {
  if(exam > 90 || projects > 10){
@@ -258,7 +259,7 @@ For example, if a bottle cost £10 normally and the discount in duty free was 10
 
 All inputs will be integers. Please return an integer. Round down.
 
-```
+```js
 //SOLUTION
 
 function dutyFree(normalPrice, discount, holidayCost){
@@ -281,7 +282,7 @@ current father's age (years)
 current age of his son (years)
 Сalculate how many years ago the father was twice as old as his son (or in how many years he will be twice as old).
 
-```
+```js
 //SOLUTION
 
 function twiceAsOld(dadYearsOld, sonYearsOld) {
@@ -308,7 +309,7 @@ Even though there are no spaces, it is still valid because none are needed:
 * ''              => true
 Note - there will be no punctuation or digits in the input string, only letters.
 
-```
+```js
 //SOLUTION
 
 function validSpacing(string2A) {
@@ -337,7 +338,7 @@ function validSpacing(string2A) {
 
 Note: input will never be an empty string
 
-```
+```js
 //SOLUTION
 function fakeBin(stringN){
   if (stringN === ''){
@@ -372,7 +373,7 @@ Examples \n
 5. remove("Hi! Hi!") === "Hi! Hi" 
 6. remove("Hi") === "Hi" 
 
-```
+```js
 //SOLUTION
 function remove(string) {  
 let newString = '';
@@ -402,7 +403,7 @@ Examples
 - "goodbye"   -->  "gdby"
 - "HELLO"     -->  "HELLO"
 
-```
+```js
 //SOLUTION
 function shortcut (string) {
   let vowels = ['a','e','i','o','u'];
@@ -432,7 +433,7 @@ Examples:
 - rps('scissors','rock') // Player 2 won!
 - rps('paper','paper') // Draw!
 
-```
+```js
 //SOLUTION
 const rps = (p1, p2) => {
   if (p1 === p2) { 
@@ -464,7 +465,7 @@ For example (Input --> Output):
 - 999 --> 4 (because 9*9*9 = 729, 7*2*9 = 126, 1*2*6 = 12, and finally 1*2 = 2)
 - 4 --> 0 (because 4 is already a one-digit number)
 
-```
+```js
 //SOLUTION
 function multiply(times, values) {
   //Callback funtion con paramentros times y values adquiriendo su valores por medio de la funcion persistence
@@ -497,7 +498,7 @@ Implement the function which takes an array containing the names of people that 
 - ["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
 Note: For 4 or more names, the number in "and 2 others" simply increases.
 
-```
+```js
 //SOLUTION
 function likes(names) {
   // recibir los nombres, contar los nombres
@@ -524,7 +525,7 @@ Write a function that takes an integer as input, and returns the number of bits 
 
 Example: The binary representation of 1234 is 10011010010, so the function should return 5 in this case
 
-```
+```js
 //SOLUTION
 function countBits(n) {
   // 1. Convertir a binario el numero que recibimos
@@ -546,7 +547,7 @@ Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
 
 If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.
 
-```
+```js
 //SOLUTION
 // 1. Convertir el string a un arreglo
 // 2. leer cada una de las palabras y encontrar el numero asignado a cada palabra para reordenar el arreglo
@@ -585,7 +586,7 @@ Examples
 
 Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
 
-```
+```js
 //SOLUTION
 // 1. Leer cada una de las palabras, mover cada la primera letra de cada palabra al final de la misma
 // 2. Agregar 'ay' al final de cada palabra sin eliminar cualquier signo de puntuacion
@@ -620,7 +621,7 @@ function pigIt(str){
 ----------------------------------------------------------------------------------------------------------
 Thursday 28th, April
 
-# *Core Challenge - Mission Statement *
+# *Core Challenge - Mission Statement*
 ## Let’s write our Mission Statement! In one paragraph, please answer to the next 5 questions:
 
 1. Who are you?
@@ -636,4 +637,38 @@ in Javascript, so I can start programming websites so I can have the opportunity
 as a Front-end developer or Back-end Developer. I'm always looking to improve in life, 
 I have taught myself to be persistent and do the best I can so I can resolve any issues
 I face in life. My main goal in life is to become a better version of myself.
+```
+
+---------------------------------------------------------------------------------------------------------
+Wednesday 4th, May
+
+# *Kata Exercise #1*
+## Simple validation of a username with regex
+Write a simple regex to validate a username. Allowed characters are:
+
+- lowercase letters,
+- numbers,
+- underscore
+Note: Length should be between 4 and 16 characters (both included).
+
+```js
+// SOLUTION
+function validateUsr(username) {
+  let res =  /^[0-9a-z_]{4,16}$/  
+  return res.test(username)
+}
+```
+# *Kata Exercise #2*
+## Get number from string
+Write a function which removes from string all non-digit characters and parse the remaining to number. E.g: "hell5o wor6ld" -> 56
+
+Function: `getNumberFromString(s)`
+
+```js
+// SOLUTION
+function getNumberFromString(s) {
+  let regex = /\D/g
+  let numero = parseInt(s.replace(regex, ''));
+  return numero;
+}
 ```

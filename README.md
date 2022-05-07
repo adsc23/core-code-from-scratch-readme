@@ -672,3 +672,68 @@ function getNumberFromString(s) {
   return numero;
 }
 ```
+
+---------------------------------------------------------------------------------------------------------
+Thursday 5th, May
+
+# *Kata Exercise #1*
+## String cleaning
+Your boss decided to save money by purchasing some cut-rate optical character recognition software for scanning in the text of old novels to your database. At first it seems to capture words okay, but you quickly notice that it throws in a lot of numbers at random places in the text.
+
+Examples (input -> output)
+```
+'! !'                 -> '! !'
+'123456789'           -> ''
+'This looks5 grea8t!' -> 'This looks great!'
+```
+
+Your harried co-workers are looking to you for a solution to take this garbled text and remove all of the numbers. Your program will take in a string and clean out all numeric characters, and return a string with spacing and special characters ~#$%^&!@*():;"'.,? all intact.
+
+```js
+//SOLUTION
+function stringClean(s){
+    let reg = /\d/g  /*Aqui lo que hago esque encuentro cualquier caracter que sea un numero para despues reemplazarlo   
+    por nada '' con la funcion .replace()*/
+    let newString = s.replace(reg, '');
+    return newString;
+  }
+```
+
+# *Kata Exercise #2*
+## Regex Password Validation
+You need to write regex that will validate a password to make sure it meets the following criteria:
+
+- At least six characters long
+- contains a lowercase letter
+- contains an uppercase letter
+- contains a number
+- Valid passwords will only be alphanumeric characters.
+
+```js
+//SOLUTION 1
+function validate(password) {
+// ^               # start of input 
+// (?=.*?[A-Z])    # Lookahead to make sure there is at least one upper case letter
+// (?=.*?[a-z])    # Lookahead to make sure there is at least one lower case letter
+// (?=.*?[0-9])    # Lookahead to make sure there is at least one number
+// [A-Za-z0-9]{6,} # Make sure there are at least 6 characters of [A-Za-z0-9]
+// $               # end of input
+  return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[A-Za-z0-9]{6,}$/.test(password);
+}
+``` 
+
+```js
+//SOLUTION 2
+function validate(password) {
+  // least six characters long --> {6,}
+  // contains a lowercase letter --> [a-z]+
+  // contains an uppercase letter --> [A-Z]+
+  // contains a number --> [0-9]+
+  
+  return (/^[a-zA-Z0-9]{6,}$/.test(password) 
+        && /[a-z]+/.test(password)
+        && /[A-Z]+/.test(password)
+        && /[0-9]+/.test(password)
+         );
+}
+```

@@ -613,9 +613,102 @@ function pigIt(str){
 }
 ```
 
+# *Kata Exercise #2*
+## Counting Duplicates
+Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
 
+Example
+- "abcde" -> 0 # no characters repeats more than once
+- "aabbcde" -> 2 # 'a' and 'b'
+- "aabBcde" -> 2 # 'a' occurs twice and 'b' twice (`b` and `B`)
+- "indivisibility" -> 1 # 'i' occurs six times
+- "Indivisibilities" -> 2 # 'i' occurs seven times and 's' occurs twice
+- "aA11" -> 2 # 'a' and '1'
+- "ABBA" -> 2 # 'A' and 'B' each occur twice
 
+```js
+function duplicateCount(text){
+    // 1. to lowerCase
+    // 2. split 
+    // 3. sort()
+    // 4. filter() SOLO METER EL ELEMENT SI ESTA REPETIDO
+    //------------------con set
+    // 5. set(filter)
+    // 6. set to array
+    //------------------sin set */
+    // 5. Return length del arreglo
 
+    text = text.toLowerCase();
+    let duplicatedArray = text.split('').sort();
+    //console.log(duplicatedArray);
+    let filterArray = duplicatedArray.filter((chr,i) => {
+        return duplicatedArray.indexOf(chr, i+1) != -1;
+    });
+    //console.log(filterArray);
+    //let filteredSet = new Set (filterArray);
+    //return filteredSet.size;
+    // SOLUCION CON EL SET
+
+    let reducer = filterArray.reduce((prev, curr) => {
+        if (prev.indexOf(curr) === -1) prev.push(curr);
+        return prev;
+    },[]);
+    return reducer.length;
+}
+```
+# *Kata Exercise #3*
+## Decode the Morse code
+In this kata you have to write a simple Morse code decoder. While the Morse code is now mostly superseded by voice and digital data communication channels, it still has its use in some applications around the world.
+The Morse code encodes every character as a sequence of "dots" and "dashes". For example, the letter A is coded as ·−, letter Q is coded as −−·−, and digit 1 is coded as ·−−−−. The Morse code is case-insensitive, traditionally capital letters are used. When the message is written in Morse code, a single space is used to separate the character codes and 3 spaces are used to separate words. For example, the message HEY JUDE in Morse code is ···· · −·−−   ·−−− ··− −·· ·.
+
+- NOTE: Extra spaces before or after the code have no meaning and should be ignored.
+
+In addition to letters, digits and some punctuation, there are some special service codes, the most notorious of those is the international distress signal SOS (that was first issued by Titanic), that is coded as ···−−−···. These special codes are treated as single special characters, and usually are transmitted as separate words.
+
+Your task is to implement a function that would take the morse code as input and return a decoded human-readable string.
+
+For example:
+
+`decodeMorse('.... . -.--   .--- ..- -.. .')
+//should return "HEY JUDE"`
+- NOTE: For coding purposes you have to use ASCII characters . and -, not Unicode characters.
+
+The Morse code table is preloaded for you as a dictionary, feel free to use it:
+
+Coffeescript/C++/Go/JavaScript/Julia/PHP/Python/Ruby/TypeScript: 
+`MORSE_CODE['.--']`
+
+All the test strings would contain valid Morse code, so you may skip checking for errors and exceptions. In C#, tests will fail if the solution code throws an exception, please keep that in mind. This is mostly because otherwise the engine would simply ignore the tests, resulting in a "valid" solution.
+
+Good luck!
+
+```js
+// Funcion secundaria
+function decodeEachWord (words){
+    let newArray = words.split(' ');
+    //console.log(newArray); Aqui primero separo en letras cualquier palabra que le mande
+    let newWord = newArray.map((eachLetter) => {
+      //let conLetra = eachLetter; Aqui hago un Map para devolver el valor en MORSE_CODE de cada letra que le paso
+      return MORSE_CODE[eachLetter];
+      });
+      return newWord.join(''); 
+  }
+
+//Funcion principal
+decodeMorse = function(morseCode){
+  if (morseCode === '...---...') return MORSE_CODE['...---...']; // Retorno SOS de una sola si me mandan esa palabra
+  
+  let words = morseCode.split('   ');
+  //console.log(typeof words[0]); Aqui separo el statement en letras
+  let newString = [];
+
+  for (let i = 0; i < words.length; i++) {
+    newString.push(decodeEachWord(words[i])) //Hago un ciclo for para pasarle cada palabra a la funcion que cree para traducir palabras
+  }
+
+  return newString.join(' ').trim(); //Uno cada letra y le paso paso la funcion trim para remover espacios al inicio y final del string final
+}
+```
 
 
 ----------------------------------------------------------------------------------------------------------
@@ -654,7 +747,16 @@ Note: Length should be between 4 and 16 characters (both included).
 ```js
 // SOLUTION
 function validateUsr(username) {
-  let res =  /^[0-9a-z_]{4,16}$/  
+ /**
+    - `^`        Start from the beginning of the string.
+    - `[]`       Allow any character specified, including...
+    - `0-9`      anything from 0 to 9,
+    - `a-z`      anything from a to z,
+    - `_`        and underscore.
+    - `{4,16}`   Accept 4 to 16 of allowed characters, both numbers included.
+    - `$`        End the string right after specified amount of allowed characters is given.
+  */
+  let res =  /^[0-9a-z_]{4,16}$/   
   return res.test(username)
 }
 ```

@@ -912,3 +912,71 @@ function findMissingLetter(array){
   return String.fromCharCode(missingFoundCode); // Una vez encontrado el codigo busco su valor en la ASCII table
 }
 ``` 
+# *Kata Exercise #2*
+## Reverse or rotate?
+The input is a string str of digits. Cut the string into chunks (a chunk here is a substring of the initial string) of size sz (ignore the last chunk if its size is less than sz).
+
+If a chunk represents an integer such as the sum of the cubes of its digits is divisible by 2, reverse that chunk; otherwise rotate it to the left by one position. Put together these modified chunks and return the result as a string.
+
+If
+- sz is <= 0 or if str is empty return ""
+- sz is greater (>) than the length of str it is impossible to take a chunk of size sz hence return "".
+
+```
+Examples:
+revrot("123456987654", 6) --> "234561876549"
+revrot("123456987653", 6) --> "234561356789"
+revrot("66443875", 4) --> "44668753"
+revrot("66443875", 8) --> "64438756"
+revrot("664438769", 8) --> "67834466"
+revrot("123456779", 8) --> "23456771"
+revrot("", 8) --> ""
+revrot("123456779", 0) --> "" 
+revrot("563000655734469485", 4) --> "0365065073456944"
+Example of a string rotated to the left by one position:
+s = "123456" gives "234561".
+``` 
+```js
+// TODO
+// 1. Recibir el string, cortarlo en pedazos dependiendo el tamaño que me manden sz
+// 2. Desechar o ignorar el sobrante del string si no podemos completar el ultimo chunk con el tamaño requerido en sz
+// 3. Si un Chunk representa un entero que sea la suma al cubo de sus numeros si divisible entre 2,
+// reversamos ese chunk, caso contrario lo rotamos por una posicion a la izquierda.
+// 4. reemsamblamos los chunks juntos en un solo string
+  
+// if sz is <= 0 or if str is empty return ""
+// if sz is greater (>) than the length of str it is impossible to take a chunk of size sz hence return "".
+/*
+Example of a string rotated to the left by one position:
+s = "123456" gives "234561".
+*/
+
+//SOLUTION
+function revrot(str, sz) {
+  if (sz <= 0 || str == "" || sz > str.length) return '';
+
+  let newArray = str.split('');
+  let arrayChunks = [];
+
+  while (newArray.length >= sz){
+    arrayChunks.push(newArray.splice(0, sz));
+  }
+  //console.log(arrayChunks); Prueba
+  
+  let result = arrayChunks.map((eachChunk) => {
+    let sum = eachChunk.reduce((prev, curr) => 
+      prev + Math.pow(curr, 3),0);
+      //console.log(sum); Prueba
+      if (sum % 2) {
+        //Este es el proceso que se hace cuando el numero es multiplo de 2
+        eachChunk.push(eachChunk[0]);
+        eachChunk.shift(); //Shift remueve el primer elemento del array y mueve los demas elementos hacia adelante
+        return eachChunk.join('');
+      } else {
+        //se aplica reverse en caso contrario para voltear el arreglo
+        return eachChunk.reverse().join(''); 
+      }
+  });
+  return result.join('');
+}
+```

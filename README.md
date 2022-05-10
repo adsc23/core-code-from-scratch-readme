@@ -699,7 +699,7 @@ decodeMorse = function(morseCode){
   if (morseCode === '...---...') return MORSE_CODE['...---...']; // Retorno SOS de una sola si me mandan esa palabra
   
   let words = morseCode.split('   ');
-  //console.log(typeof words[0]); Aqui separo el statement en letras
+  //console.log(typeof words[0]); Aqui separo el statement en palabras
   let newString = [];
 
   for (let i = 0; i < words.length; i++) {
@@ -709,8 +709,39 @@ decodeMorse = function(morseCode){
   return newString.join(' ').trim(); //Uno cada letra y le paso paso la funcion trim para remover espacios al inicio y final del string final
 }
 ```
+----------------------------------------------------------------------------------------------------------
+Wednesday 27th, April
 
+# *Kata Exercise #1*
+## Valid Parentheses
+Write a function that takes a string of parentheses, and determines if the order of the parentheses is valid. The function should return true if the string is valid, and false if it's invalid.
 
+Examples
+```
+"()"              =>  true
+")(()))"          =>  false
+"("               =>  false
+"(())((()())())"  =>  true
+```
+Constraints
+` 0 <= input.length <= 100 `
+
+```js
+//SOLUTION
+function validParentheses(parens) {
+let parenCount = 0;
+  for (let i = 0; i < parens.length; i++) {
+    if (parens[i] === ')') {
+      parenCount--;
+    }
+    if (parens[i] === '(') {
+      parenCount++;
+    }
+    if (parenCount < 0) return false;
+  }
+  return parenCount == 0;
+}
+```
 ----------------------------------------------------------------------------------------------------------
 Thursday 28th, April
 
@@ -839,3 +870,45 @@ function validate(password) {
          );
 }
 ```
+---------------------------------------------------------------------------------------------------------
+Monday 9th, May
+
+# *Kata Exercise #1*
+## Find the missing letter
+Write a method that takes an array of consecutive (increasing) letters as input and that returns the missing letter in the array.
+
+You will always get an valid array. And it will be always exactly one letter be missing. The length of the array will always be at least 2.
+The array will always contain letters in only one case.
+
+Example:
+```
+['a','b','c','d','f'] -> 'e' ['O','Q','R','S'] -> 'P'
+
+["a","b","c","d","f"] -> "e"
+["O","Q","R","S"] -> "P"
+```
+(Use the English alphabet with 26 letters!)
+
+```js
+//SOLUTION
+function findMissingLetter(array){
+  let newArray = array.map((char) => char.charCodeAt());
+  // Aqui convierto el arreglo de letras en el codigo equivalente de cada letra en la tabla ASCII
+  //console.log(newArray);  Prueba
+  let missingFoundCode = '';
+  
+  for (let i = 1; i < newArray.length; i++) {
+    //console.log('Esto vale i -> ' + newArray[i] + ' Esto vale i + 1 -> ' + newArray[i-1]); Prueba
+    if (newArray[i] - newArray[i - 1] == 2) {
+      //Aqui recorro el array empezando desde la posicion 1 y lo resto con la posicion 
+      //anterior para saber el valor de diferencia entre los valores, dos numeros de  
+      //diferencia activan mi statement true y con eso puedo encontrar el codigo que busco si le resto uno
+      //console.log(newArray[i]); Prueba
+      missingFoundCode = newArray[i] - 1; // 
+      //console.log(missingFoundCode) Prueba
+    }
+  }
+
+  return String.fromCharCode(missingFoundCode); // Una vez encontrado el codigo busco su valor en la ASCII table
+}
+``` 

@@ -980,3 +980,167 @@ function revrot(str, sz) {
   return result.join('');
 }
 ```
+---------------------------------------------------------------------------------------------------------
+Tuesday 10th, May
+
+# *Exercise #1*
+## Given the data, define the interface "User" and use it accordingly.
+
+Original Code
+```ts
+export type User = unknown;
+
+export const users: unknown[] = [
+    {
+        name: 'Max Mustermann',
+        age: 25,
+        occupation: 'Chimney sweep'
+    },
+    {
+        name: 'Kate Müller',
+        age: 23,
+        occupation: 'Astronaut'
+    }
+];
+
+export function logPerson(user: unknown) {
+    console.log(` - ${user.name}, ${user.age}`);
+}
+
+console.log('Users:');
+users.forEach(logPerson);
+```
+
+Solution
+```ts
+//Solution
+export interface User {  //Aqui se crea el tipo del objeto puede ser type 
+    name: string;         // En typeScript tengo que especificar mis variables para objetos
+    age : number;         // Si a la variable le pongo age? la hago opcional y si no se llena sera un undefined
+    occupation: string;   // si defino el tipo de dato que ingresaria de esta manera string | null quiere decir que puede aceptar un string o null 
+}
+
+export const users: User[] = [
+    {
+        name: 'Max Mustermann',
+        age: 25,
+        occupation: 'Chimney sweep'
+    },
+    {
+        name: 'Kate Müller',
+        age: 23,
+        occupation: 'Astronaut'
+    }
+];
+
+export function logPerson(user: User) {
+    console.log(` - ${user.name}, ${user.age}`);
+}
+
+console.log('Users:');
+users.forEach(logPerson);
+
+/* In case if you are stuck:
+
+// https://www.typescriptlang.org/docs/handbook/interfaces.html#introduction
+*/
+```
+
+# *Exercise #2*
+## Type "Person" is missing, please define it and use it in persons array and logPerson function in order to fix all the TS errors.
+
+Original code:
+```ts
+interface User {
+    name: string;
+    age: number;
+    occupation: string;
+}
+
+interface Admin {
+    name: string;
+    age: number;
+    role: string;
+}
+
+export type Person = unknown;
+
+export const persons: User[] /* <- Person[] */ = [
+    {
+        name: 'Max Mustermann',
+        age: 25,
+        occupation: 'Chimney sweep'
+    },
+    {
+        name: 'Jane Doe',
+        age: 32,
+        role: 'Administrator'
+    },
+    {
+        name: 'Kate Müller',
+        age: 23,
+        occupation: 'Astronaut'
+    },
+    {
+        name: 'Bruce Willis',
+        age: 64,
+        role: 'World saver'
+    }
+];
+
+export function logPerson(user: User) {
+    console.log(` - ${user.name}, ${user.age}`);
+}
+
+persons.forEach(logPerson);
+```
+
+Solution:
+```ts
+interface User {
+    name: string;
+    age: number;
+    occupation: string;
+}
+
+interface Admin {
+    name: string;
+    age: number;
+    role: string;
+}
+
+export type Person = User | Admin;  //Agrege | para dejarle saber que el objeto persona puede ser un Admin o un User
+
+export const persons: Person[] /* <- Person[] */ = [  // aqui solo se le agrego que persons va a recibir un arreglo de datos del tipo persona
+    {
+        name: 'Max Mustermann',
+        age: 25,
+        occupation: 'Chimney sweep'
+    },
+    {
+        name: 'Jane Doe',
+        age: 32,
+        role: 'Administrator'
+    },
+    {
+        name: 'Kate Müller',
+        age: 23,
+        occupation: 'Astronaut'
+    },
+    {
+        name: 'Bruce Willis',
+        age: 64,
+        role: 'World saver'
+    }
+];
+
+export function logPerson(user: User | Admin) {   // Se agrego que el parametro user puede ser del tipo User or Admin
+    console.log(` - ${user.name}, ${user.age}`);
+}
+
+persons.forEach(logPerson);
+
+// In case if you are stuck:
+// https://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types
+```
+    

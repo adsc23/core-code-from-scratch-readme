@@ -742,6 +742,42 @@ let parenCount = 0;
   return parenCount == 0;
 }
 ```
+# *Kata Exercise #2*
+## Convert string to camel case
+Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized (known as Upper Camel Case, also often referred to as Pascal case).
+
+Examples
+```
+"the-stealth-warrior" gets converted to "theStealthWarrior"
+"The_Stealth_Warrior" gets converted to "TheStealthWarrior"
+```
+
+```js
+//SOLUTION
+function toCamelCase(str){
+  // 1. Primero tengo que separar el string en palabras con delimitando los dashes o underscore
+  // 2. Leer cada palabra y si la primero palabra es minuscula no cambiar a upper case la primera letra
+  // 3. Cambiar la primera letra a mayuscula para las demas
+  // 4. Volver a unir el string.
+  if (str == '' ) return '';
+
+  let re = /[_-]/; // la regular expresion la uso para buscar cualquier _ o - y usarlos de delimitadores para el split
+  let newArray = str.split(re);
+
+  //console.log(newArray); Prueba
+
+  let finalArray = newArray.map((eachWord, index) => {
+    if (index > 0){   // Aqui valido si estoy o no en la primera palabra, by default mandare la
+    let newWord = eachWord.split('');  //  misma palabra sin tocarla si estoy en el index 0 
+    newWord[0] = newWord[0].toUpperCase();
+    return newWord.join('');
+    }
+    return eachWord;
+  });
+
+  return finalArray.join('');
+}
+``` 
 ----------------------------------------------------------------------------------------------------------
 Thursday 28th, April
 
